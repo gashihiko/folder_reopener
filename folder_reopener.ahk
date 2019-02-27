@@ -1,4 +1,4 @@
-﻿df_stack := []
+﻿cf_stack := []
 adressmarker := {0x0411: "アドレス", 0x0409: "Adress", 0x0809: "Adress", 0x0c09: "Adress", 0x1009: "Adress", 0x1409: "Adress"}[A_Language]
 
 loop {
@@ -31,13 +31,13 @@ loop {
 	}
 
 	for _, v in closed_folder {
-		df_stack.Insert(v)
+		cf_stack.Insert(v)
 	}
 
 	pastfolders := folders.Clone()
 
-	if (df_stack.MaxIndex() > 100) {
-		df_stack.Remove(1)
+	if (cf_stack.MaxIndex() > 100) {
+		cf_stack.Remove(1)
 	}
 }
 
@@ -60,15 +60,15 @@ lacked_value(obj, comp) {
 
 ^+w::
 Try {
-	Run, % df_stack[df_stack.MaxIndex()]
+	Run, % cf_stack[cf_stack.MaxIndex()]
 }
-df_stack.Remove()
+cf_stack.Remove()
 Return
 
 ;hotkey to check the closed folder stack
 ^+F1::
 closed := ""
-for k, v in df_stack {
+for k, v in cf_stack {
 	closed .= "`n" . v
 }
 	msgbox % closed
