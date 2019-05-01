@@ -17,11 +17,11 @@ Loop {
 	}
 
 	closed_folder := lacked_value(folders, pastfolders)
-	created_folder := lacked_value(pastfolders, folders)
+	opened_folder := lacked_value(pastfolders, folders)
 
 	Loop % closed_folder.MaxIndex() {
 		for kcl, vcl in closed_folder {
-			for kcr, vcr in created_folder {
+			for kcr, vcr in opened_folder {
 				If vcr contains %vcl%
 					closed_folder.Remove(kcl) ; Parent folder before opening its inner folder is not closed folder.
 				If vcl contains %vcr%
