@@ -1,5 +1,5 @@
 # folder_reopener
-## AutoHotkey script for hotkey to reopen folders (explorer).
+## Hotkey to reopen folders (explorer).
 This program allows you to reopen the folder that you closed recently.
 
 - Shift + Ctrl + W to reopen folder.
