@@ -1,16 +1,28 @@
-﻿cf_stack := []
-adressmarker := {0x0411: "アドレス", 0x0409: "Adress", 0x0809: "Adress", 0x0c09: "Adress", 0x1009: "Adress", 0x1409: "Adress"}[A_Language]
+#SingleInstance Force
+
+myicon := ".\folder_reopener.ico"
+IfExist, %myicon%
+{
+	Menu, Tray, Icon, %myicon%
+}
+
+
+cf_stack := []
+addressmark := {0411: "アドレス", 0409: "Address", 0809: "Address"}[A_Language]
+if(StrLen(addressmark) == 0){
+	addressmark = Address
+}
 
 Loop {
 	sleep, 1000
 	folders := []
-	WinGet, folder, List, ahk_exe explorer.exe, %adressmarker%
+	WinGet, folder, List, ahk_exe explorer.exe, %addressmark%
 
 	Loop, %folder% {
 		tmp := folder%A_Index%
 		WinGetText, text, ahk_id %tmp%
-		RegExMatch(text, adressmarker . ": (.+?)\r", text)
-		If text contains \, :
+		RegExMatch(text, addressmark . ": (.+?)\r", text)
+		If text1 contains \, :
 		{
 			folders.Insert(text1)
 		}
