@@ -22,7 +22,7 @@ Loop {
 		tmp := folder%A_Index%
 		WinGetText, text, ahk_id %tmp%
 		RegExMatch(text, addressmark . ": (.+?)\r", text)
-		If text1 contains \, :
+		If text1 contains \
 		{
 			folders.Insert(text1)
 		}
